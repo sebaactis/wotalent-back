@@ -10,6 +10,10 @@ class daoBusqueda {
     async addBusqueda(busqueda) {
         const busquedaSchema = await busquedasModel.create(busqueda);
 
+        if(!busquedaSchema) {
+            return "Ocurrio un error"
+        }
+
         return {
             nombre: busquedaSchema.nombre,
             descripcion: busquedaSchema.descripcion
@@ -18,6 +22,10 @@ class daoBusqueda {
 
     async getBusqueda(codigo) {
         const busqueda = await busquedasModel.findOne({ codigo });
+        
+        if (!busqueda) {
+            return "No se encuentra ese codigo"
+        }
 
         return {
             nombre: busqueda.nombre,
@@ -27,6 +35,10 @@ class daoBusqueda {
 
     async removeBusqueda(codigo) {
         const busqueda = await busquedasModel.deleteOne({ codigo })
+
+        if(!busqueda) {
+            return "Codigo inexistente"
+        }
 
         return {
             nombre: busqueda.nombre,

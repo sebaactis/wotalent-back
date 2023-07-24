@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(session({
     store: MongoStore.create({
         mongoUrl: 'mongodb+srv://sebaactis:54891329@cowotalent.4zxqamd.mongodb.net/COWO',
-        ttl: 10
+        ttl: 10000
     }),
     secret: 'COWOS3CR3TC0D3',
     resave: false,
