@@ -10,6 +10,9 @@
     "preview": "vite preview",
     "start": "pm2-runtime start ecosystem.config.cjs --env production"
   },
+  "engines": {
+    "node": "16.x"
+  }
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-mongo": "^5.0.0",
