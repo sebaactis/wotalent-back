@@ -1,5 +1,6 @@
 import daoBusqueda from "../daos/daoBusqueda.js";
-import nodemailer from "nodemailer"
+import { generateTransport } from "../utils.js";
+
 
 class BusquedaManager {
 
@@ -28,22 +29,23 @@ class BusquedaManager {
         return busqueda
     }
 
-    async contacto(email) {
+    async contacto(data) {
 
-        const transport = nodemailer.createTransport({
-            service: 'gmail',
-            port: 587,
-            auth: {
-                user: 'sebaactis@gmail.com',
-                pass: process.env.PASS_KEY
-            }
-        })
+
+        const transport = generateTransport();
 
         const result = await transport.sendMail({
             from: 'Test',
-            to: email,
+            to: 'sebaactis@gmail.com',
             subject: 'Prueba',
-            html: `<h1 style={color: "red"}> Esto es una prueba </h1>`
+            html: `
+            <h3> ${data.nombre} </h3>
+            <h3> ${data.apellido} </h3>
+            <p> ${data.empresa} </p>
+            <p> ${data.telefono} </p>
+            <p> ${data.email} </p>
+            <p> ${data.consulta} </p>
+            `
         })
 
         return "Enviado"

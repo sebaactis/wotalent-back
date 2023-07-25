@@ -2,7 +2,7 @@ module.exports = {
     apps: [{
       name: "cowotalent",
       script: "./index.js",
-      watch: false,
+      watch: true,
       instances: 4,
       env: {
         NODE_ENV: 'development',
