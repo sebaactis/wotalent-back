@@ -1,11 +1,15 @@
 module.exports = {
     apps: [{
-      name: "WO-Talent",
-      script: "index.js",
-      autorestart: true,
-      watch: true,
+      name: "cowotalent",
+      script: "./index.js",
+      watch: false,
       instances: 4,
-      ignore_watch: "",
-      instance_var: "0",
+      env: {
+        NODE_ENV: 'development',
+      },
+      env_production: {
+        NODE_ENV: "production"
+      },
+      autorestart: true,
   }]
   };

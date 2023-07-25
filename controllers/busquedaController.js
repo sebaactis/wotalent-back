@@ -34,5 +34,14 @@ export const remove = async (req, res) => {
 
     const busqueda = await manager.remove(codigo)
 
-    res.status(200).json({status: "success", payload: busqueda})
+    res.status(200).json({ status: "success", payload: busqueda })
+}
+
+export const contacto = async (req, res) => {
+
+   const { email } = req.body;
+
+   const envio = await manager.contacto(email);
+
+    res.status(200).json({ status: "success", payload: envio });
 }
