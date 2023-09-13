@@ -13,31 +13,30 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
+mongoose.connect(process.env.MONGO_DB_URI)
+
 app.use(cors({
-    origin: 'http://localhost:8080',
+    origin: 'https://wotalent.com.ar',
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }))
 
-app.listen(8080, () => console.log('Listening on port 8080'))
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cookieParser());
-
 app.use(session({
     store: MongoStore.create({
-        mongoUrl: process.env.MONGO_DB_URI,
-        ttl: 10000
+        mongoUrl: 'mongodb+srv://sebaactis:54891329@cowotalent.4zxqamd.mongodb.net/COWO',
+        ttl: 100
     }),
     secret: 'COWOS3CR3TC0D3',
     resave: false,
-    saveUninitializad: false
+    saveUninitialized: false
 }))
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
 
 app.use('/api/busquedas', busquedasRouter);
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/session', sessionRouter);
 
 
-
-mongoose.connect(process.env.MONGO_DB_URI)
+app.listen(8080, () => console.log('Listening on port 8080'))

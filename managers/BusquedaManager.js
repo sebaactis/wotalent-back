@@ -35,16 +35,18 @@ class BusquedaManager {
         const transport = generateTransport();
 
         const result = await transport.sendMail({
-            from: 'Test',
-            to: 'sebaactis@gmail.com',
-            subject: 'Prueba',
+            from: 'WEB',
+            to: 'info@wotalent.com.ar',
+            subject: 'Contacto via web',
             html: `
-            <h3> ${data.nombre} </h3>
-            <h3> ${data.apellido} </h3>
-            <p> ${data.empresa} </p>
-            <p> ${data.telefono} </p>
-            <p> ${data.email} </p>
-            <p> ${data.consulta} </p>
+            <h2> Datos del cliente: </h2>
+            <h5> <strong>Nombre y apellido:</strong> ${data.nombreApellido}</h5>
+            <h5> <strong>Correo Electronico:</strong> ${data.email} </h5>
+            <h5> <strong>Empresa:</strong> ${data.empresa} </h5>
+            <h5> <strong>Telefono:</strong> ${data.telefono} </h5>
+            <br></br>
+            <h3> <strong>Su consulta:</strong> </h3>
+            <h5> ${data.consulta} </h5>
             `
         })
 

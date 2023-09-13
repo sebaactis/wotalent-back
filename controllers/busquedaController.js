@@ -1,4 +1,4 @@
-import BusquedaManager from "../managers/busquedaManager.js";
+import BusquedaManager from "../managers/BusquedaManager.js";
 
 const manager = new BusquedaManager();
 
@@ -19,7 +19,7 @@ export const getOne = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-
+  
     const busqueda = req.body;
 
     const newBusqueda = await manager.addBusqueda(busqueda);
