@@ -33,6 +33,18 @@ class daoBusqueda {
         }
     }
 
+    async update(codigo, data) {
+        const busqueda = await busquedasModel.findOne({ codigo });
+        
+        if (!busqueda) {
+            return "No se encuentra la busqueda para el codigo seleccionado"
+        }
+
+        const busquedaEditada = await busquedasModel.updateOne({codigo: codigo}, data)
+        return busquedaEditada
+
+    }
+
     async removeBusqueda(codigo) {
         const busqueda = await busquedasModel.deleteOne({ codigo })
 

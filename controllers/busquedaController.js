@@ -28,6 +28,22 @@ export const create = async (req, res) => {
 
 }
 
+export const update = async (req, res) => {
+  
+    const { nombre, resumen, descripcion, codigo } = req.body;
+
+    const data = {
+        nombre,
+        resumen,
+        descripcion
+    } 
+
+    const newBusqueda = await manager.update(codigo, data);
+
+    res.status(201).send({ status: "success", payload: newBusqueda });
+
+}
+
 export const remove = async (req, res) => {
 
     const codigo = req.body.codigo;

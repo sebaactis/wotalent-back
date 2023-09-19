@@ -4,7 +4,6 @@ import { generateTransport } from "../utils.js";
 
 class BusquedaManager {
 
-
     constructor() {
         this.dao = new daoBusqueda();
     }
@@ -24,13 +23,18 @@ class BusquedaManager {
         return busqueda
     }
 
+    async update(codigo, data) {
+
+        const busqueda = await this.dao.update(codigo, data)
+        return busqueda
+    }
+
     async remove(codigo) {
         const busqueda = await this.dao.removeBusqueda(codigo);
         return busqueda
     }
 
     async contacto(data) {
-
 
         const transport = generateTransport();
 
